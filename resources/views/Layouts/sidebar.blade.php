@@ -36,7 +36,7 @@
                 <li class="nav-item">
                     <a target="_blank" href="{{ env('PROJECT_LEADS') }}"
                         class="nav-link {{ Request::is('leads/demoid') || Request::is('leads/callback') || Request::is('leads/idcreated') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-arrow-left"></i>
+                        <i class="nav-icon fa fa-arrow-right"></i>
                         <p>
                             Goto Leads Project
                         </p>
@@ -45,7 +45,7 @@
                 <li class="nav-item">
                     <a target="_blank" href="{{ env('PROJECT_CUSTOMER') }}"
                         class="nav-link {{ Request::is('leads/demoid') || Request::is('leads/callback') || Request::is('leads/idcreated') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-arrow-left"></i>
+                        <i class="nav-icon fa fa-arrow-right"></i>
                         <p>
                             Goto Customer Project
                         </p>
@@ -54,7 +54,7 @@
                 <li class="nav-item">
                     <a target="_blank" href="{{ env('PROJECT_EXPENSE') }}"
                         class="nav-link {{ Request::is('leads/demoid') || Request::is('leads/callback') || Request::is('leads/idcreated') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-arrow-left"></i>
+                        <i class="nav-icon fa fa-arrow-right"></i>
                         <p>
                             Goto Expense Project
                         </p>
