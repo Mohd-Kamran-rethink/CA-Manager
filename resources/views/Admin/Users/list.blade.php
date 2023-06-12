@@ -55,7 +55,7 @@
                                                 <td>
                                                     @if ($item->role == 'manager')
                                                         Leads Project
-                                                    @elseif($item->role == 'customer_manager')
+                                                    @elseif($item->role == 'customer_care_manager')
                                                         Customer Project
                                                     @elseif($item->role == 'expense_manager')
                                                         Expense Project
