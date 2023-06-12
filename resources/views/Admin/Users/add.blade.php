@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>{{ isset($agent) ? 'Edit Agent' : 'Add Agent' }}</h1>
+                    <h1>{{ isset($agent) ? 'Edit User' : 'Add User' }}</h1>
                     <h6 class="text-danger">* Items marked with an asterisk are required fields and must be completed</h6>
                 </div>
             </div>

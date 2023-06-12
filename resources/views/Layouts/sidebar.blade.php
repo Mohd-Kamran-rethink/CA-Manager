@@ -23,14 +23,43 @@
                 </li>
                 {{-- users --}}
                 <li
-                class="nav-item {{ Request::is('users') || Request::is('users/edit') || Request::is('users/add') ? 'menu-is-opening menu-open' : '' }}">
-                <a href="{{url('users')}}"
-                    class="nav-link {{ Request::is('leads/demoid') || Request::is('leads/callback') || Request::is('leads/idcreated') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-users"></i>
-                    <p>
-                        Users
-                    </p>
-                </a></li>
+                    class="nav-item {{ Request::is('users') || Request::is('users/edit') || Request::is('users/add') ? 'menu-is-opening menu-open' : '' }}">
+                    <a href="{{ url('users') }}"
+                        class="nav-link {{ Request::is('leads/demoid') || Request::is('leads/callback') || Request::is('leads/idcreated') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Users
+                        </p>
+                    </a>
+                </li>
+                {{-- projects --}}
+                <li class="nav-item">
+                    <a target="_blank" href="{{ env('PROJECT_LEADS') }}"
+                        class="nav-link {{ Request::is('leads/demoid') || Request::is('leads/callback') || Request::is('leads/idcreated') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-arrow-left"></i>
+                        <p>
+                            Goto Leads Project
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a target="_blank" href="{{ env('PROJECT_CUSTOMER') }}"
+                        class="nav-link {{ Request::is('leads/demoid') || Request::is('leads/callback') || Request::is('leads/idcreated') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-arrow-left"></i>
+                        <p>
+                            Goto Customer Project
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a target="_blank" href="{{ env('PROJECT_EXPENSE') }}"
+                        class="nav-link {{ Request::is('leads/demoid') || Request::is('leads/callback') || Request::is('leads/idcreated') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-arrow-left"></i>
+                        <p>
+                            Goto Expense Project
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
