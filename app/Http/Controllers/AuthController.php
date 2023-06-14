@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Attendance;
+use App\Client;
 use App\Expense;
 use App\Lead;
 use App\Manager;
@@ -103,7 +104,8 @@ class AuthController extends Controller
         $internalTransfer=Expense::where('transfer_type','=','Internal')->get()->sum('amount');
         $ExpenseDebit=Expense::where('transfer_type','=','External')->where('accounting_type','=','Debit')->get()->sum('amount');
         $ExpenseCredit=Expense::where('transfer_type','=','External')->where('accounting_type','=','Credit')->get()->sum('amount');
-
-        return view('Admin.Dashboard.index', compact('ExpenseCredit','ExpenseDebit','internalTransfer','PendingDepTranTotal','ApproveDepoistTranTotal','PendingwithTranTotal','ApprovewithTranTotal','todaysBonus','totalBonus','ApprovedWithdrawTotal','ApprovedDepoistTotal','ApprovedWithdrawToday','ApprovedDepoistToday','totaldepositbanker', 'totalDepositers', 'totalWithdrawrersBanker', 'totalWithdrawrers', 'leadManagers', 'leadAgent', 'todaysLeads', 'monthlyLeads', 'TotalLeads'));
+        // clients
+        $clients=Client::get()->count();
+        return view('Admin.Dashboard.index', compact('clients','ExpenseCredit','ExpenseDebit','internalTransfer','PendingDepTranTotal','ApproveDepoistTranTotal','PendingwithTranTotal','ApprovewithTranTotal','todaysBonus','totalBonus','ApprovedWithdrawTotal','ApprovedDepoistTotal','ApprovedWithdrawToday','ApprovedDepoistToday','totaldepositbanker', 'totalDepositers', 'totalWithdrawrersBanker', 'totalWithdrawrers', 'leadManagers', 'leadAgent', 'todaysLeads', 'monthlyLeads', 'TotalLeads'));
     }
 }

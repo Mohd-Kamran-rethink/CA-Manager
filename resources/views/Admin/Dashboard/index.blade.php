@@ -320,6 +320,18 @@
 
                     </div>
                 </div>
+                <div class="col-3">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>{{ $clients ?? 0 }}</h3>
+                            <p>Total Clients</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+
+                    </div>
+                </div>
             </div>
     </section>
     {{-- expense projects --}}
