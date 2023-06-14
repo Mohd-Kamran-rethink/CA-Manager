@@ -196,9 +196,21 @@
 
                     </div>
                 </div>
-                {{-- monthly --}}
                 <div class="col-3">
                     <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{ $clients ?? 0 }}</h3>
+                            <p>Total Clients</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+
+                    </div>
+                </div>
+                {{-- monthly --}}
+                <div class="col-3">
+                    <div class="small-box bg-primary">
                         <div class="inner">
                             <h3>{{ $ApprovedWithdrawToday ?? 0 }}</h3>
                             <p>Today's Total Withdraws (Money)</p>
@@ -210,7 +222,7 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    <div class="small-box bg-primary">
+                    <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>{{ $ApprovedDepoistToday ?? 0 }}</h3>
                             <p>Today's Total Deposits (Money)</p>
@@ -223,7 +235,7 @@
                 </div>
                 {{-- total --}}
                 <div class="col-3">
-                    <div class="small-box bg-danger">
+                    <div class="small-box bg-success">
                         <div class="inner">
                             <h3>{{ $ApprovedDepoistTotal ?? 0 }}</h3>
                             <p>Total Deposits (Money)</p>
@@ -235,7 +247,7 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    <div class="small-box bg-success">
+                    <div class="small-box bg-warning">
                         <div class="inner">
                             <h3>{{ $ApprovedWithdrawTotal ?? 0 }}</h3>
                             <p>Total Withdraws (Money)</p>
@@ -248,7 +260,7 @@
                 </div>
                 {{-- count --}}
                 <div class="col-3">
-                    <div class="small-box bg-warning">
+                    <div class="small-box bg-primary">
                         <div class="inner">
                             <h3>{{ count($ApprovewithTranTotal) ?? 0 }}</h3>
                             <p>Total Approved Withdraws (Count)</p>
@@ -260,7 +272,7 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    <div class="small-box bg-primary">
+                    <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>{{ count($PendingwithTranTotal) ?? 0 }}</h3>
                             <p>Total Pending Withdraws (Count)</p>
@@ -272,7 +284,7 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    <div class="small-box bg-danger">
+                    <div class="small-box bg-success">
                         <div class="inner">
                             <h3>{{ count($ApproveDepoistTranTotal) ?? 0 }}</h3>
                             <p>Total Approved Deposit (Count)</p>
@@ -284,7 +296,7 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    <div class="small-box bg-success">
+                    <div class="small-box bg-warning">
                         <div class="inner">
                             <h3>{{ count($PendingDepTranTotal) ?? 0 }}</h3>
                             <p>Total Pending Deposit (Count)</p>
@@ -297,7 +309,7 @@
                 </div>
                 {{-- bonus --}}
                 <div class="col-3">
-                    <div class="small-box bg-warning">
+                    <div class="small-box bg-primary">
                         <div class="inner">
                             <h3>{{ $todaysBonus ?? 0 }}</h3>
                             <p>Today's Bonus</p>
@@ -309,7 +321,7 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    <div class="small-box bg-primary">
+                    <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>{{ $totalBonus ?? 0 }}</h3>
                             <p>Total Bonus</p>
@@ -320,18 +332,7 @@
 
                     </div>
                 </div>
-                <div class="col-3">
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>{{ $clients ?? 0 }}</h3>
-                            <p>Total Clients</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-
-                    </div>
-                </div>
+                
             </div>
     </section>
     {{-- expense projects --}}
