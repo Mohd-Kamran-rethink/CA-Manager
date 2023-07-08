@@ -21,6 +21,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item  ">
+                    <a href="{{ url('/bank-accounts') }}" class="nav-link {{ Request::is('bank-accounts') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-building"></i>
+                        <p>
+                            Banks
+                        </p>
+                    </a>
+                </li>
                 {{-- users --}}
                 <li
                     class="nav-item {{ Request::is('users') || Request::is('users/edit') || Request::is('users/add') ? 'menu-is-opening menu-open' : '' }}">
@@ -29,6 +37,14 @@
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Users
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a href="{{ url('/clients') }}" class="nav-link {{ Request::is('clients') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Clients
                         </p>
                     </a>
                 </li>

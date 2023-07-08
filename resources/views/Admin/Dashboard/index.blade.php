@@ -19,6 +19,339 @@
         </div>
     </section>
     <hr>
+    <section class="content card">
+        <div class="container-fluid card-body">
+            <div class="row">
+                <div class="col-6" style="border-right: 2px solid">
+                    <h2>CRICADDA MAIN</h2>
+                    <div class="card-body table-responsive p-0">
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Today</th>
+                                    <th scope="col">Today's New</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Deposit</td>
+                                    <td>100-5</td>
+                                    <td>{{$MaintodaysDepositAllClient->sum('amount')}}-{{$MaintodaysDepositAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Withdraw</td>
+                                    <td>--</td>
+                                    <td>{{$MaintodaysWithdrawAllClient->sum('amount')}}-{{$MaintodaysWithdrawAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Bonus(D-W)</td>
+                                    <td>--</td>
+                                    <td>{{$MaintodaysDepositAllClient->sum('bonus')-$MaintodaysWithdrawAllClient->sum('bonus')}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Expense</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                </tr>
+                                <tr>
+                                    <td>Net Profit/Loss</td>
+                                    <td>--</td>
+                                    <td>{{$MaintodaysDepositAllClient->sum('amount')-$MaintodaysWithdrawAllClient->sum('amount')}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="card-body table-responsive p-0">
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">This Week</th>
+                                    <th scope="col">This Week New</th>
+                                    <th scope="col">This Week Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Deposit</td>
+                                    <td>0-5</td>
+                                    <td>{{$MainThiWeekDepositAllClient->sum('amount')}}-{{$MainThiWeekDepositAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Withdraw</td>
+                                    <td>--</td>
+                                    <td>{{$MainThiWeekWithdrawAllClient->sum('amount')}}-{{$MainThiWeekWithdrawAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Bonus (D-W)</td>
+                                    <td>--</td>
+                                    <td>{{$MainThiWeekDepositAllClient->sum('bonus')-$MainThiWeekWithdrawAllClient->sum('bonus')}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Expense</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                </tr>
+                                <tr>
+                                    <td>Net Profit/Loss</td>
+                                    <td>--</td>
+                                    <td>{{$MainThiWeekDepositAllClient->sum('amount')-$MainThiWeekWithdrawAllClient->sum('amount')}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="card-body table-responsive p-0">
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">This Month</th>
+                                    <th scope="col">This Month New</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr>
+                                    <td>Deposit(D-W)</td>
+                                    <td>100-5</td>
+                                    <td>{{$MainThiMonthDepositAllClient->sum('amount')}}-{{$MainThiMonthDepositAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Withdraw</td>
+                                    <td>--</td>
+                                    <td>{{$MainThiMonthWithdrawAllClient->sum('amount')}}-{{$MainThiMonthWithdrawAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Bonus</td>
+                                    <td>--</td>
+                                    <td>{{$MainThiMonthDepositAllClient->sum('bonus')-$MainThiMonthWithdrawAllClient->sum('bonus')}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Expense</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                </tr>
+                                <tr>
+                                    <td>Net Profit/Loss</td>
+                                    <td>--</td>
+                                    <td>{{$MainThiMonthDepositAllClient->sum('amount')-$MainThiMonthWithdrawAllClient->sum('amount')}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">This Year</th>
+                                    <th scope="col">This Year New</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr>
+                                    <td>Deposit</td>
+                                    <td>100-5</td>
+                                    <td>{{$MainThiYearDepositAllClient->sum('amount')}}-{{$MainThiYearDepositAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Withdraw</td>
+                                    <td>--</td>
+                                    <td>{{$MainThiYearWithdrawAllClient->sum('amount')}}-{{$MainThiYearWithdrawAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Bonus(D-W)</td>
+                                    <td>--</td>
+                                    <td>{{$MainThiYearDepositAllClient->sum('bonus')-$MainThiYearWithdrawAllClient->sum('bonus')}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Expense</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                </tr>
+                                <tr>
+                                    <td>Net Profit/Loss</td>
+                                    <td>--</td>
+                                    <td>{{$MainThiYearDepositAllClient->sum('amount')-$MainThiYearWithdrawAllClient->sum('amount')}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <h2>CRICADDA F2</h2>
+                    <div class="card-body table-responsive p-0">
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Today</th>
+                                    <th scope="col">Today's New</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Deposit</td>
+                                    <td>100-5</td>
+                                    <td>{{$F1todaysDepositAllClient->sum('amount')}}-{{$F1todaysDepositAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Withdraw</td>
+                                    <td>--</td>
+                                    <td>{{$F1todaysWithdrawAllClient->sum('amount')}}-{{$F1todaysWithdrawAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Bonus</td>
+                                    <td>--</td>
+                                    <td>{{$F1todaysDepositAllClient->sum('bonus')-$F1todaysWithdrawAllClient->sum('bonus')}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Expense</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                </tr>
+                                <tr>
+                                    <td>Net Profit/Loss</td>
+                                    <td>--</td>
+                                    <td>{{$F1todaysDepositAllClient->sum('amount')-$F1todaysWithdrawAllClient->sum('amount')}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="card-body table-responsive p-0">
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">This Week</th>
+                                    <th scope="col">This Week New</th>
+                                    <th scope="col">This Week Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Deposit</td>
+                                    <td>0-5</td>
+                                    <td>{{$F1ThiWeekDepositAllClient->sum('amount')}}-{{$F1ThiWeekDepositAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Withdraw</td>
+                                    <td>--</td>
+                                    <td>{{$F1ThiWeekWithdrawAllClient->sum('amount')}}-{{$F1ThiWeekWithdrawAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Bonus(D-W)</td>
+                                    <td>--</td>
+                                    <td>{{$F1ThiWeekDepositAllClient->sum('bonus')-$F1ThiWeekWithdrawAllClient->sum('bonus')}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Expense</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                </tr>
+                                <tr>
+                                    <td>Net Profit/Loss</td>
+                                    <td>--</td>
+                                    <td>{{$F1ThiWeekDepositAllClient->sum('amount')-$F1ThiWeekWithdrawAllClient->sum('amount')}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="card-body table-responsive p-0">
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">This Month</th>
+                                    <th scope="col">This Month New</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr>
+                                    <td>Deposit</td>
+                                    <td>100-5</td>
+                                    <td>{{$F1ThiMonthDepositAllClient->sum('amount')}}-{{$F1ThiMonthDepositAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Withdraw</td>
+                                    <td>--</td>
+                                    <td>{{$F1ThiMonthWithdrawAllClient->sum('amount')}}-{{$F1ThiMonthWithdrawAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Bonus</td>
+                                    <td>--</td>
+                                    <td>{{$F1ThiMonthDepositAllClient->sum('bonus')-$F1ThiMonthWithdrawAllClient->sum('bonus')}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Expense</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                </tr>
+                                <tr>
+                                    <td>Net Profit/Loss</td>
+                                    <td>--</td>
+                                    <td>{{$F1ThiMonthDepositAllClient->sum('amount')-$F1ThiMonthWithdrawAllClient->sum('amount')}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">This Year</th>
+                                    <th scope="col">This Year New</th>
+                                    <th scope="col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr>
+                                    <td>Deposit</td>
+                                    <td>100-5</td>
+                                    <td>{{$F1ThiYearDepositAllClient->sum('amount')}}-{{$F1ThiYearDepositAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Withdraw</td>
+                                    <td>--</td>
+                                    <td>{{$F1ThiYearWithdrawAllClient->sum('amount')}}-{{$F1ThiYearWithdrawAllClient->count()}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Bonus</td>
+                                    <td>--</td>
+                                    <td>{{$F1ThiYearDepositAllClient->sum('bonus')-$F1ThiYearWithdrawAllClient->sum('bonus')}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Expense</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                </tr>
+                                <tr>
+                                    <td>Net Profit/Loss</td>
+                                    <td>--</td>
+                                    <td>{{$F1ThiYearDepositAllClient->sum('amount')-$F1ThiYearWithdrawAllClient->sum('amount')}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="content-header">
         <div class="container-fluid">
@@ -133,257 +466,6 @@
             </div>
     </section>
 
-    {{-- customer care project --}}
-    <hr>
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="">Customer Care Details</h1>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-3">
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{ $totalWithdrawrers ?? 0 }}</h3>
-                            <p>Total Withdrawars</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="small-box bg-primary">
-                        <div class="inner">
-                            <h3>{{ $totalDepositers ?? 0 }}</h3>
-                            <p>Total Depositers</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-
-                    </div>
-                </div>
-                {{-- daily --}}
-                <div class="col-3">
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>{{ $totalWithdrawrersBanker ?? 0 }}</h3>
-                            <p>Total Withdrawal Banker</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>{{ $totaldepositbanker ?? 0 }}</h3>
-                            <p>Total Deposit Banker</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{ $clients ?? 0 }}</h3>
-                            <p>Total Clients</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-
-                    </div>
-                </div>
-                {{-- monthly --}}
-                <div class="col-3">
-                    <div class="small-box bg-primary">
-                        <div class="inner">
-                            <h3>{{ $ApprovedWithdrawToday ?? 0 }}</h3>
-                            <p>Today's Total Withdraws (Money)</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-tasks"></i>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>{{ $ApprovedDepoistToday ?? 0 }}</h3>
-                            <p>Today's Total Deposits (Money)</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-tasks"></i>
-                        </div>
-
-                    </div>
-                </div>
-                {{-- total --}}
-                <div class="col-3">
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>{{ $ApprovedDepoistTotal ?? 0 }}</h3>
-                            <p>Total Deposits (Money)</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-tasks"></i>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{ $ApprovedWithdrawTotal ?? 0 }}</h3>
-                            <p>Total Withdraws (Money)</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-tasks"></i>
-                        </div>
-
-                    </div>
-                </div>
-                {{-- count --}}
-                <div class="col-3">
-                    <div class="small-box bg-primary">
-                        <div class="inner">
-                            <h3>{{ count($ApprovewithTranTotal) ?? 0 }}</h3>
-                            <p>Total Approved Withdraws (Count)</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-tasks"></i>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>{{ count($PendingwithTranTotal) ?? 0 }}</h3>
-                            <p>Total Pending Withdraws (Count)</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-tasks"></i>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>{{ count($ApproveDepoistTranTotal) ?? 0 }}</h3>
-                            <p>Total Approved Deposit (Count)</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-tasks"></i>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{ count($PendingDepTranTotal) ?? 0 }}</h3>
-                            <p>Total Pending Deposit (Count)</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-tasks"></i>
-                        </div>
-
-                    </div>
-                </div>
-                {{-- bonus --}}
-                <div class="col-3">
-                    <div class="small-box bg-primary">
-                        <div class="inner">
-                            <h3>{{ $todaysBonus ?? 0 }}</h3>
-                            <p>Today's Bonus</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-tasks"></i>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>{{ $totalBonus ?? 0 }}</h3>
-                            <p>Total Bonus</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-tasks"></i>
-                        </div>
-
-                    </div>
-                </div>
-                
-            </div>
-    </section>
-    {{-- expense projects --}}
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="">Expense Project Details</h1>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-4">
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{ $internalTransfer?? 0 }}</h3>
-                            <p>Total Internal Transfer</p>
-                        </div>
-                        <div class="icon">
-                            <i style="font-size: 50px" class="fa fa-credit-card"></i>
-                        </div>
-                    </div>
-                </div>
-                {{-- dwbit --}}
-                <div class="col-4">
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{ $ExpenseDebit?? 0 }}</h3>
-                            <p>Total Expense Debits</p>
-                        </div>
-                        <div class="icon">
-                            <i style="font-size: 50px" class="fa fa-credit-card"></i>
-                        </div>
-                    </div>
-                </div>
-                {{-- credits --}}
-                <div class="col-4">
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{ $ExpenseCredit?? 0 }}</h3>
-                            <p>Total Expense Credits</p>
-                        </div>
-                        <div class="icon">
-                            <i style="font-size: 50px" class="fa fa-credit-card"></i>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-    </section>
+   
+   
 @endsection

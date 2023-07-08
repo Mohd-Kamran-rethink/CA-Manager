@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Attendance;
 use App\Client;
+use App\Exchange;
 use App\Expense;
 use App\Lead;
 use App\Manager;
@@ -62,10 +63,16 @@ class AuthController extends Controller
     // main dashboard
     public function dashboard()
     {
+
+
         // dates
         $today = Carbon::now()->format('Y-m-d');
         $currentMonthStart = Carbon::now()->startOfMonth();
         $currentMonthEnd = Carbon::now()->endOfMonth();
+        $currentWeekStart = Carbon::now()->startOfWeek();
+        $currentWeekEnd = Carbon::now()->endOfWeek();
+        $currentYearStart = Carbon::now()->startOfYear();
+        $currentYearEnd = Carbon::now()->endOfYear();
         // total users type
         // lead project managers
         $leadManagers = User::where('role', '=', 'manager')->get()->count();
@@ -78,34 +85,43 @@ class AuthController extends Controller
         $ProcmonthlyLeads = Lead::whereNotNull('status_id')->whereBetween('created_at', [$currentMonthStart, $currentMonthEnd])->get()->count();
         $ProcTotalLeads = Lead::whereNotNull('status_id')->get()->count();
         //  customer care project
-        $totalWithdrawrers = User::where('role', '=', 'withdrawrer')->get()->count();
-        $totalWithdrawrersBanker = User::where('role', '=', 'withdrawal_banker')->get()->count();
-        $totalDepositers = User::where('role', '=', 'depositer')->get()->count();
-        $totaldepositbanker = User::where('role', '=', 'deposit_banker')->get()->count();
-        // transactions
+        // this data will be according to exchanges
+        // For CRICADDA MAIN its id is 2
+        $cricAddaMain=2;
+        $cricAddaF1=2;
         // todays
-        $ApproveDepoistTranToday = Transaction::where('type', 'Deposit')->where('status', 'Approve')->whereDate('created_at', $today)->get();
-        $ApprovedDepoistToday= $ApproveDepoistTranToday->sum('amount');
-        $ApprovewithTranToday = Transaction::where('type', 'Withdraw')->where('status', 'Approve')->whereDate('created_at', $today)->get();
-        $ApprovedWithdrawToday= $ApprovewithTranToday->sum('amount');
-        // total
-        $ApproveDepoistTranTotal = Transaction::where('type', 'Deposit')->where('status', 'Approve')->get();
-        $ApprovedDepoistTotal= $ApproveDepoistTranTotal->sum('amount');
-        $ApprovewithTranTotal = Transaction::where('type', 'Withdraw')->where('status', 'Approve')->get();
-        $ApprovedWithdrawTotal= $ApprovewithTranTotal->sum('amount');
+        $MaintodaysDepositAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Deposit')->whereDate('created_at', $today)->get();
+        $MaintodaysWithdrawAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Withdraw')->whereDate('created_at',$today)->get();
+        // this week
+        $MainThiWeekDepositAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentWeekStart)->whereDate('transactions.date', '<=', $currentWeekEnd)->get();
+        $MainThiWeekWithdrawAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentWeekStart)->whereDate('transactions.date', '<=', $currentWeekEnd)->get();
+        // this month
+        $MainThiMonthDepositAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentMonthStart)->whereDate('transactions.date', '<=', $currentMonthEnd)->get();
+        $MainThiMonthWithdrawAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentMonthStart)->whereDate('transactions.date', '<=', $currentMonthEnd)->get();
+        // this year
+        $MainThiYearDepositAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentYearStart)->whereDate('transactions.date', '<=', $currentYearEnd)->get();
+        $MainThiYearWithdrawAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentYearStart)->whereDate('transactions.date', '<=', $currentYearEnd)->get();
         
-        // 
-        $PendingwithTranTotal = Transaction::where('type', 'Withdraw')->where('status', 'Pending')->get();
-        $PendingDepTranTotal = Transaction::where('type', 'Deposit')->where('status', 'Pending')->get();
-        $todaysBonus= $ApproveDepoistTranToday->sum('bonus');
-        $totalBonus= $ApproveDepoistTranTotal->sum('bonus');
         
-        // 
-        $internalTransfer=Expense::where('transfer_type','=','Internal')->get()->sum('amount');
-        $ExpenseDebit=Expense::where('transfer_type','=','External')->where('accounting_type','=','Debit')->get()->sum('amount');
-        $ExpenseCredit=Expense::where('transfer_type','=','External')->where('accounting_type','=','Credit')->get()->sum('amount');
-        // clients
+
+        // CIRCKADDA F1
+       // todays
+       $F1todaysDepositAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Deposit')->whereDate('created_at', $today)->get();
+       $F1todaysWithdrawAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Withdraw')->whereDate('created_at',$today)->get();
+       // this week
+       $F1ThiWeekDepositAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentWeekStart)->whereDate('transactions.date', '<=', $currentWeekEnd)->get();
+       $F1ThiWeekWithdrawAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentWeekStart)->whereDate('transactions.date', '<=', $currentWeekEnd)->get();
+       // this month
+       $F1ThiMonthDepositAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentMonthStart)->whereDate('transactions.date', '<=', $currentMonthEnd)->get();
+       $F1ThiMonthWithdrawAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentMonthStart)->whereDate('transactions.date', '<=', $currentMonthEnd)->get();
+       // this year
+       $F1ThiYearDepositAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentYearStart)->whereDate('transactions.date', '<=', $currentYearEnd)->get();
+       $F1ThiYearWithdrawAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentYearStart)->whereDate('transactions.date', '<=', $currentYearEnd)->get();
+       
+        
+        
+       // clients
         $clients=Client::get()->count();
-        return view('Admin.Dashboard.index', compact('clients','ExpenseCredit','ExpenseDebit','internalTransfer','PendingDepTranTotal','ApproveDepoistTranTotal','PendingwithTranTotal','ApprovewithTranTotal','todaysBonus','totalBonus','ApprovedWithdrawTotal','ApprovedDepoistTotal','ApprovedWithdrawToday','ApprovedDepoistToday','totaldepositbanker', 'totalDepositers', 'totalWithdrawrersBanker', 'totalWithdrawrers', 'leadManagers', 'leadAgent', 'todaysLeads', 'monthlyLeads', 'TotalLeads'));
+        return view('Admin.Dashboard.index', compact('F1ThiYearWithdrawAllClient','F1ThiYearDepositAllClient','F1ThiMonthWithdrawAllClient','F1ThiMonthDepositAllClient','F1ThiWeekWithdrawAllClient','F1ThiWeekDepositAllClient','F1todaysWithdrawAllClient','F1todaysDepositAllClient','MainThiYearWithdrawAllClient','MainThiYearDepositAllClient','MainThiWeekWithdrawAllClient','MainThiWeekDepositAllClient','MainThiMonthWithdrawAllClient','MainThiMonthDepositAllClient','MaintodaysWithdrawAllClient','MaintodaysDepositAllClient','clients', 'leadManagers', 'leadAgent', 'todaysLeads', 'monthlyLeads', 'TotalLeads'));
     }
 }
