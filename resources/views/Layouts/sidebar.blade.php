@@ -49,8 +49,12 @@
                     </a>
                 </li>
                 {{-- projects --}}
+                @php
+                $token = Crypt::encryptString('supermanager@ca.com');
+                @endphp
+                            
                 <li class="nav-item">
-                    <a target="_blank" href="{{ env('PROJECT_LEADS') }}"
+                    <a target="_blank" href="{{ env('PROJECT_LEADS').'?email=supermanager@ca.com'}}"
                         class="nav-link {{ Request::is('leads/demoid') || Request::is('leads/callback') || Request::is('leads/idcreated') ? 'active' : '' }}">
                         <i class="nav-icon fa fa-arrow-right"></i>
                         <p>
@@ -58,21 +62,13 @@
                         </p>
                     </a>
                 </li>
+                
                 <li class="nav-item">
-                    <a target="_blank" href="{{ env('PROJECT_CUSTOMER') }}"
+                    <a target="_blank" href="{{ env('PROJECT_EXPENSE').'?email=supermanager@ca.com' }}"
                         class="nav-link {{ Request::is('leads/demoid') || Request::is('leads/callback') || Request::is('leads/idcreated') ? 'active' : '' }}">
                         <i class="nav-icon fa fa-arrow-right"></i>
                         <p>
-                            Goto Customer Project
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a target="_blank" href="{{ env('PROJECT_EXPENSE') }}"
-                        class="nav-link {{ Request::is('leads/demoid') || Request::is('leads/callback') || Request::is('leads/idcreated') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-arrow-right"></i>
-                        <p>
-                            Goto Expense Project
+                            Goto Marketing Project
                         </p>
                     </a>
                 </li>

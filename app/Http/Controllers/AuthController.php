@@ -19,8 +19,9 @@ use MasterAttendance;
 
 class AuthController extends Controller
 {
-    public function loginView()
+    public function loginView(Request $req)
     {
+        
         if (session()->has('user')) {
             return redirect('/dashboard');
         } else {
