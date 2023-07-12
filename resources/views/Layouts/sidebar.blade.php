@@ -72,6 +72,33 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ url('ledgers-groups') }}"
+                        class="nav-link {{ Request::is('ledgers-groups') || Request::is('ledgers-groups/add') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-columns"></i>
+                        <p>
+                            Ledger Group
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('/ledgers') }}"
+                        class="nav-link {{ Request::is('ledger') || Request::is('ledger/add') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-credit-card"></i>
+                        <p>
+                            Ledger
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('transfers') }}"
+                        class="nav-link {{ Request::is('transfers') || Request::is('transfers/add') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-credit-card"></i>
+                        <p>
+                            Transfer
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
