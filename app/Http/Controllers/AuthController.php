@@ -21,7 +21,7 @@ class AuthController extends Controller
 {
     public function loginView(Request $req)
     {
-        
+
         if (session()->has('user')) {
             return redirect('/dashboard');
         } else {
@@ -88,41 +88,41 @@ class AuthController extends Controller
         //  customer care project
         // this data will be according to exchanges
         // For CRICADDA MAIN its id is 2
-        $cricAddaMain=2;
-        $cricAddaF1=2;
+        $cricAddaMain = 2;
+        $cricAddaF1 = 2;
         // todays
-        $MaintodaysDepositAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Deposit')->whereDate('created_at', $today)->get();
-        $MaintodaysWithdrawAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Withdraw')->whereDate('created_at',$today)->get();
+        $MaintodaysDepositAllClient = Transaction::where('exchange_id', '=', '2')->where('type', 'Deposit')->whereDate('date', $today)->get();
+        $MaintodaysWithdrawAllClient = Transaction::where('exchange_id', '=', '2')->where('type', 'Withdraw')->whereDate('date', $today)->get();
         // this week
-        $MainThiWeekDepositAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentWeekStart)->whereDate('transactions.date', '<=', $currentWeekEnd)->get();
-        $MainThiWeekWithdrawAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentWeekStart)->whereDate('transactions.date', '<=', $currentWeekEnd)->get();
+        $MainThiWeekDepositAllClient = Transaction::where('exchange_id', '=', '2')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentWeekStart)->whereDate('transactions.date', '<=', $currentWeekEnd)->get();
+        $MainThiWeekWithdrawAllClient = Transaction::where('exchange_id', '=', '2')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentWeekStart)->whereDate('transactions.date', '<=', $currentWeekEnd)->get();
         // this month
-        $MainThiMonthDepositAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentMonthStart)->whereDate('transactions.date', '<=', $currentMonthEnd)->get();
-        $MainThiMonthWithdrawAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentMonthStart)->whereDate('transactions.date', '<=', $currentMonthEnd)->get();
+        $MainThiMonthDepositAllClient = Transaction::where('exchange_id', '=', '2')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentMonthStart)->whereDate('transactions.date', '<=', $currentMonthEnd)->get();
+        $MainThiMonthWithdrawAllClient = Transaction::where('exchange_id', '=', '2')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentMonthStart)->whereDate('transactions.date', '<=', $currentMonthEnd)->get();
         // this year
-        $MainThiYearDepositAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentYearStart)->whereDate('transactions.date', '<=', $currentYearEnd)->get();
-        $MainThiYearWithdrawAllClient=Transaction::where('exchange_id','=','2')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentYearStart)->whereDate('transactions.date', '<=', $currentYearEnd)->get();
-        
-        
+        $MainThiYearDepositAllClient = Transaction::where('exchange_id', '=', '2')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentYearStart)->whereDate('transactions.date', '<=', $currentYearEnd)->get();
+        $MainThiYearWithdrawAllClient = Transaction::where('exchange_id', '=', '2')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentYearStart)->whereDate('transactions.date', '<=', $currentYearEnd)->get();
+
+
 
         // CIRCKADDA F1
-       // todays
-       $F1todaysDepositAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Deposit')->whereDate('created_at', $today)->get();
-       $F1todaysWithdrawAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Withdraw')->whereDate('created_at',$today)->get();
-       // this week
-       $F1ThiWeekDepositAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentWeekStart)->whereDate('transactions.date', '<=', $currentWeekEnd)->get();
-       $F1ThiWeekWithdrawAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentWeekStart)->whereDate('transactions.date', '<=', $currentWeekEnd)->get();
-       // this month
-       $F1ThiMonthDepositAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentMonthStart)->whereDate('transactions.date', '<=', $currentMonthEnd)->get();
-       $F1ThiMonthWithdrawAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentMonthStart)->whereDate('transactions.date', '<=', $currentMonthEnd)->get();
-       // this year
-       $F1ThiYearDepositAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentYearStart)->whereDate('transactions.date', '<=', $currentYearEnd)->get();
-       $F1ThiYearWithdrawAllClient=Transaction::where('exchange_id','=','1')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentYearStart)->whereDate('transactions.date', '<=', $currentYearEnd)->get();
-       
-        
-        
-       // clients
-        $clients=Client::get()->count();
-        return view('Admin.Dashboard.index', compact('F1ThiYearWithdrawAllClient','F1ThiYearDepositAllClient','F1ThiMonthWithdrawAllClient','F1ThiMonthDepositAllClient','F1ThiWeekWithdrawAllClient','F1ThiWeekDepositAllClient','F1todaysWithdrawAllClient','F1todaysDepositAllClient','MainThiYearWithdrawAllClient','MainThiYearDepositAllClient','MainThiWeekWithdrawAllClient','MainThiWeekDepositAllClient','MainThiMonthWithdrawAllClient','MainThiMonthDepositAllClient','MaintodaysWithdrawAllClient','MaintodaysDepositAllClient','clients', 'leadManagers', 'leadAgent', 'todaysLeads', 'monthlyLeads', 'TotalLeads'));
+        // todays
+        $F1todaysDepositAllClient = Transaction::where('exchange_id', '=', '1')->where('type', 'Deposit')->whereDate('date', $today)->get();
+        $F1todaysWithdrawAllClient = Transaction::where('exchange_id', '=', '1')->where('type', 'Withdraw')->whereDate('date', $today)->get();
+        // this week
+        $F1ThiWeekDepositAllClient = Transaction::where('exchange_id', '=', '1')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentWeekStart)->whereDate('transactions.date', '<=', $currentWeekEnd)->get();
+        $F1ThiWeekWithdrawAllClient = Transaction::where('exchange_id', '=', '1')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentWeekStart)->whereDate('transactions.date', '<=', $currentWeekEnd)->get();
+        // this month
+        $F1ThiMonthDepositAllClient = Transaction::where('exchange_id', '=', '1')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentMonthStart)->whereDate('transactions.date', '<=', $currentMonthEnd)->get();
+        $F1ThiMonthWithdrawAllClient = Transaction::where('exchange_id', '=', '1')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentMonthStart)->whereDate('transactions.date', '<=', $currentMonthEnd)->get();
+        // this year
+        $F1ThiYearDepositAllClient = Transaction::where('exchange_id', '=', '1')->where('type', 'Deposit')->whereDate('transactions.date', '>=', $currentYearStart)->whereDate('transactions.date', '<=', $currentYearEnd)->get();
+        $F1ThiYearWithdrawAllClient = Transaction::where('exchange_id', '=', '1')->where('type', 'Withdraw')->whereDate('transactions.date', '>=', $currentYearStart)->whereDate('transactions.date', '<=', $currentYearEnd)->get();
+
+
+
+        // clients
+        $clients = Client::get()->count();
+        return view('Admin.Dashboard.index', compact('F1ThiYearWithdrawAllClient', 'F1ThiYearDepositAllClient', 'F1ThiMonthWithdrawAllClient', 'F1ThiMonthDepositAllClient', 'F1ThiWeekWithdrawAllClient', 'F1ThiWeekDepositAllClient', 'F1todaysWithdrawAllClient', 'F1todaysDepositAllClient', 'MainThiYearWithdrawAllClient', 'MainThiYearDepositAllClient', 'MainThiWeekWithdrawAllClient', 'MainThiWeekDepositAllClient', 'MainThiMonthWithdrawAllClient', 'MainThiMonthDepositAllClient', 'MaintodaysWithdrawAllClient', 'MaintodaysDepositAllClient', 'clients', 'leadManagers', 'leadAgent', 'todaysLeads', 'monthlyLeads', 'TotalLeads'));
     }
 }
